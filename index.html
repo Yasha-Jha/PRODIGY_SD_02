@@ -3,31 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Number Guessing Game</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-      }
-
-      .container {
-        margin-top: 100px;
-      }
-
-      input[type="number"],
-      button {
-        padding: 10px;
-        margin: 10px;
-      }
-
-      button {
-        cursor: pointer;
-      }
-
-      p#message {
-        font-weight: bold;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
@@ -38,48 +15,6 @@
       <p id="message"></p>
     </div>
 
-    <script>
-      let secretNumber;
-      let attempts = 0;
-
-      function generateRandomNumber() {
-        secretNumber = Math.floor(Math.random() * 100) + 1;
-      }
-
-      function checkGuess() {
-        const guessInput = document.getElementById("guessInput");
-        const guess = parseInt(guessInput.value);
-        attempts++;
-
-        if (isNaN(guess) || guess < 1 || guess > 100) {
-          setMessage("Please enter a number between 1 and 100.");
-          return;
-        }
-
-        if (guess === secretNumber) {
-          setMessage(
-            `Congratulations! You've guessed the correct number ${secretNumber} in ${attempts} attempts!`,
-            "green"
-          );
-          guessInput.disabled = true;
-        } else if (guess < secretNumber) {
-          setMessage("Too low! Try again.", "red");
-        } else {
-          setMessage("Too high! Try again.", "red");
-        }
-
-        guessInput.value = "";
-      }
-
-      function setMessage(message, color = "black") {
-        const messageElement = document.getElementById("message");
-        messageElement.textContent = message;
-        messageElement.style.color = color;
-      }
-
-      window.onload = function () {
-        generateRandomNumber();
-      };
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
